@@ -1,7 +1,7 @@
 %define name	gtkpsproc
 %define version	2.0
 %define tarver	20
-%define release 1mdk
+%define release  %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	Postscript printing options GUI
