@@ -41,9 +41,15 @@ cp pixmaps/* $RPM_BUILD_ROOT/%_datadir/pixmaps/%name
 cd ..
 
 #menu
-mkdir -p $RPM_BUILD_ROOT%{_menudir}
-cat << EOF > $RPM_BUILD_ROOT%{_menudir}/%{name}
-?package(%{name}): command="%{name}" icon="%{name}.png" needs="x11" title="GtkPSProc" longtitle="Postscript printing GUI" section="System/Configuration/Printing"
+mkdir -p $RPM_BUILD_ROOT%{_datadir}/applications/
+cat << EOF > %buildroot%{_datadir}/applications/mandriva-%{name}.desktop
+[Desktop Entry]
+Type=Application
+Exec=%{name}
+Icon=%{name}
+Name=GtkPSProc
+Comment=Postscript printing GUI
+Categories=HardwareSettings;
 EOF
 
 #icons
@@ -70,7 +76,7 @@ rm -rf $RPM_BUILD_ROOT
 %doc README doc/*
 %{_bindir}/%name
 %{_datadir}/pixmaps/%name
-%{_menudir}/%name
+%{_datadir}/applications/mandriva-%name.desktop
 %{_liconsdir}/%name.png
 %{_iconsdir}/%name.png
 %{_miconsdir}/%name.png
