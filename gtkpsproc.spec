@@ -12,6 +12,7 @@ Source:		%{name}%{tarver}.tar.bz2
 URL:		http://www.rastersoft.com/gtkpsproc.html
 License:	GPL
 Group:		System/Configuration/Printing
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig ImageMagick gtk2-devel
 
 %description
