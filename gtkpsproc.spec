@@ -12,7 +12,7 @@ URL:		http://www.rastersoft.com/gtkpsproc.html
 License:	GPLv2+
 Group:		System/Configuration/Printing
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	pkgconfig ImageMagick gtk2-devel
+BuildRequires:	pkgconfig ImageMagick gtk2-devel libglade2-devel
 Requires:	gnome-python gnome-python-applet python-gobject
 Requires:	python-gamin
 Requires(post):	cups cups-common
