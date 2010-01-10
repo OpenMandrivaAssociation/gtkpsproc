@@ -1,6 +1,6 @@
 %define name	gtkpsproc
-%define version	3.3b
-%define release  %mkrel 2
+%define version	3.4
+%define release  %mkrel 1
 
 Name: 	 	%{name}
 Summary: 	Postscript printing interface
