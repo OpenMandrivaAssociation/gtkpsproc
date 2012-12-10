@@ -7,13 +7,12 @@ Summary: 	Postscript printing interface
 Version: 	%{version}
 Release: 	%{release}
 
-Source:		%{name}-%{version}.tar.bz2
+Source0:		%{name}-%{version}.tar.bz2
 URL:		http://www.rastersoft.com/gtkpsproc.html
 License:	GPLv2+
 Group:		System/Configuration/Printing
-BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	pkgconfig imagemagick
-BuildRequires:	gtk2-devel libglade2-devel
+BuildRequires:	pkgconfig(gtk+-2.0) pkgconfig(libglade-2.0)
 BuildRequires:	cups-devel
 Requires:	gnome-python gnome-python-applet python-gobject
 Requires:	python-gamin
@@ -40,7 +39,6 @@ you will have to configure your desktop to run the gtkpsproc-applet.
 make
 										
 %install
-rm -rf $RPM_BUILD_ROOT
 install -d %{buildroot}/%{_bindir}
 install -m 755 gtkpsproc %{buildroot}/%{_bindir}/gtkpsproc
 install -d %{buildroot}/%{_datadir}/gtkpsproc
@@ -82,24 +80,15 @@ convert -size 16x16 %name.svg $RPM_BUILD_ROOT/%_miconsdir/%name.png
 
 %find_lang %name
 
-%clean
-rm -rf $RPM_BUILD_ROOT
-
 %post
 lpadmin -p GtkPSproc -E -v psproc_backend:/
 /etc/rc.d/init.d/cups restart
-%if %mdkversion < 200900
-%update_menus
-%endif
 
 %preun
 killall gtkpsproc-applet
 		
 %postun
 /etc/rc.d/init.d/cups restart
-%if %mdkversion < 200900
-%clean_menus
-%endif
 
 %files -f %{name}.lang
 %defattr(-,root,root)
@@ -114,3 +103,44 @@ killall gtkpsproc-applet
 %{_iconsdir}/%name.png
 %{_miconsdir}/%name.png
 
+
+
+%changelog
+* Sun Dec 05 2010 Oden Eriksson <oeriksson@mandriva.com> 3.4-2mdv2011.0
++ Revision: 610996
+- rebuild
+
+* Sun Jan 10 2010 Jérôme Brenier <incubusss@mandriva.org> 3.4-1mdv2010.1
++ Revision: 488907
+- new version 3.4
+
+* Fri Sep 04 2009 Thierry Vignaud <tv@mandriva.org> 3.3b-2mdv2010.0
++ Revision: 429340
+- rebuild
+
+  + Oden Eriksson <oeriksson@mandriva.com>
+    - lowercase ImageMagick
+
+* Wed Jul 02 2008 Austin Acton <austin@mandriva.org> 3.3b-1mdv2009.0
++ Revision: 230593
+- buildrequires cups-devel
+- buildrequires libglade
+- new version
+- big changes
+
+  + Pixel <pixel@mandriva.com>
+    - rpm filetriggers deprecates update_menus/update_scrollkeeper/update_mime_database/update_icon_cache/update_desktop_database/post_install_gconf_schemas
+
+  + Olivier Blin <oblin@mandriva.com>
+    - restore BuildRoot
+
+* Tue Dec 18 2007 Thierry Vignaud <tv@mandriva.org> 2.0-1mdv2008.1
++ Revision: 132150
+- auto-convert XDG menu entry
+- kill re-definition of %%buildroot on Pixel's request
+- use %%mkrel
+- import gtkpsproc
+
+
+* Wed Oct 27 2004 Austin Acton <austin@mandrake.org> 2.0-1mdk
+- initial package
