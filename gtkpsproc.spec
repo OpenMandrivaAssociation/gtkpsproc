@@ -8,7 +8,7 @@ Version: 	%{version}
 Release: 	%{release}
 
 Source0:		%{name}-%{version}.tar.bz2
-URL:		http://www.rastersoft.com/gtkpsproc.html
+URL:		https://www.rastersoft.com/gtkpsproc.html
 License:	GPLv2+
 Group:		System/Configuration/Printing
 BuildRequires:	pkgconfig imagemagick
