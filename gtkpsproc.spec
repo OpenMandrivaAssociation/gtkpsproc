@@ -11,6 +11,7 @@ Source0:		%{name}-%{version}.tar.bz2
 URL:		https://www.rastersoft.com/gtkpsproc.html
 License:	GPLv2+
 Group:		System/Configuration/Printing
+BuildRequires:	make
 BuildRequires:	pkgconfig imagemagick
 BuildRequires:	pkgconfig(gtk+-2.0) pkgconfig(libglade-2.0)
 BuildRequires:	cups-devel
