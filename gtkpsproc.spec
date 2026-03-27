@@ -5,7 +5,7 @@
 Name: 	 	%{name}
 Summary: 	Postscript printing interface
 Version: 	%{version}
-Release: 	%{release}
+Release: 	%{release}1
 
 Source0:		%{name}-%{version}.tar.bz2
 URL:		https://www.rastersoft.com/gtkpsproc.html
