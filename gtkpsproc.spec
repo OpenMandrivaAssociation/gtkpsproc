@@ -39,6 +39,9 @@ you will have to configure your desktop to run the gtkpsproc-applet.
 # declaration, and getline's second argument is size_t *.
 sed -i '/#include <cups\/cups.h>/a int checkexist(gchar *);' main.c
 sed -i 's/int size,bsize=0;/int size; size_t bsize=0;/' main.c
+# callbacks_cancel.c calls these. C23 rejects the implicit declarations.
+sed -i '/^#endif$/i void finaliza(gchar todo);' variables.h
+sed -i '/^#endif$/i void set_configuration(gboolean, gboolean, gboolean, gboolean, gboolean, gboolean, gboolean, gboolean);' variables.h
 
 %build
 make
