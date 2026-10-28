@@ -15,7 +15,7 @@ BuildRequires:	make
 BuildRequires:	pkgconfig imagemagick
 BuildRequires:	pkgconfig(gtk+-2.0) pkgconfig(libglade-2.0)
 BuildRequires:	cups-devel
-Requires:	gnome-python gnome-python-applet python-gobject
+Requires:	python-gobject
 Requires:	python-gamin
 Requires(post):	cups cups-common
 Requires(postun): cups
@@ -50,8 +50,8 @@ install pixmaps/* %{buildroot}/%{_datadir}/gtkpsproc/
 install -d %{buildroot}/%{_datadir}/pixmaps
 install gtkpsproc.svg %{buildroot}/%{_datadir}/pixmaps/
 install -m 755 psproc_applet.py %{buildroot}/%{_bindir}/psproc_applet
-install -d %{buildroot}/%{_prefix}/lib/cups/backend
-install -m 755 psproc_backend.py %{buildroot}/%{_prefix}/lib/cups/backend/psproc_backend
+install -d %{buildroot}/%{_exec_prefix}/lib/cups/backend
+install -m 755 psproc_backend.py %{buildroot}/%{_exec_prefix}/lib/cups/backend/psproc_backend
 #install -d %{buildroot}/%{_datadir}/cups/model
 #install gtkpsprc.ppd %{buildroot}/%{_datadir}/cups/model/
 install -d %{buildroot}/%{_libdir}/bonobo/servers
@@ -96,7 +96,7 @@ killall gtkpsproc-applet
 %doc %{_datadir}/doc/%name
 %{_bindir}/*
 %{_libdir}/bonobo/servers/*
-%{_prefix}/lib/cups/backend/*
+%{_exec_prefix}/lib/cups/backend/*
 %{_datadir}/%name
 %{_datadir}/pixmaps/*
 %{_datadir}/applications/mandriva-%name.desktop
